@@ -1,0 +1,19 @@
+body{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    justify-content: center;
+    
+}
+#Etch-a-Sketch{
+    display: grid;
+    width: 400px;
+    height: 400px;
+    
+
+}
+.sketch-cell{
+    background: white;
+    border: 1px dotted pink;
+}
