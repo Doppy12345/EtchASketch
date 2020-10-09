@@ -1,19 +1,81 @@
+:root{
+    --etch-a-sketch-size: 400px;
+}
+
 body{
-    display: flex;
     margin: 0;
     padding: 0;
     height: 100vh;
-    justify-content: center;
-    
+    background-image: -webkit-radial-gradient(circle,#f2e6ff ,#751aff);
+}
+#main-container{
+    padding : 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 #Etch-a-Sketch{
     display: grid;
-    width: 400px;
-    height: 400px;
-    
+    width: var(--etch-a-sketch-size);
+    height: var(--etch-a-sketch-size);
+    border: 2px solid #b8b8b8;
+    border-radius: 5px;
+    box-shadow:  1px 1px 20px -8px black;
 
+}
+#grid-size-input{
+    padding: 30px 0 30px 0;
+}
+#title {
+    font-size: 32px;
+    font-family: Lobster;
+}
+#color-picker-container{
+    display: flex;
+    width: calc(var(--etch-a-sketch-size)* 1.2);
+    padding-top:  20px;
+    justify-content: space-between;
+}
+
+form{
+    width: calc(var(--etch-a-sketch-size)* 0.7);
+    display: flex;
+    justify-content: space-between;
+}
+
+.grid-size-text-input{
+    color: #751aff;
+    text-align: center;
+    font-size: 16px;
+    min-width: 5rem;
+    max-width: 8rem;
+    background-color: #faf5ff;
+    border:  3px solid #b8b8b8;
+    border-radius:  10px;
+    box-shadow:  1px 1px 20px -8px black;
+}
+
+.button{
+    height: 2.5rem; 
+}
+
+.button , .submit-button{
+    color: #751aff;
+    background-color: #faf5ff;
+    border:  3px solid #b8b8b8;
+    border-radius:  10px;
+    font-size: 18px;
+    min-width: 8rem;
+    max-width: 10rem;
+    box-shadow:  1px 1px 20px -8px black;
+}
+
+.button:hover , .submit-button:hover , .grid-size-text-input:hover, .grid-size-text-input:focus{
+    scale: 1.1;
+    background-color: #c8c4cc ;
+    color: #8f1fff;
 }
 .sketch-cell{
     background: white;
-    border: 1px dotted pink;
+    
 }

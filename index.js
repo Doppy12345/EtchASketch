@@ -1,5 +1,9 @@
 const etchSketch = document.querySelector('#Etch-a-Sketch');
 
+let sketchInColor = false;
+
+let currentDimension = 16;
+
 const fillBlack = function(element){
     element.style.background = 'black';
 }
@@ -25,6 +29,8 @@ const fillColor = function(element){
         )`
     }
 }
+
+setUpPage()
 
 
 function buildGrid(dimension,fillCell){
@@ -52,9 +58,47 @@ function buildGrid(dimension,fillCell){
     }
 }
 
-function  clearGrid(){
+function clearGrid(){
    let cells = Array.from(etchSketch.children);
-   cells.forEach( (cell) => cell.style.background = 'white' );
+   cells.forEach( (cell) => cell.style.background = '' );
 }
 
+function setUpPage(){
+
+    buildGrid(currentDimension,fillBlack);
+
+    document.querySelector('button[data-buttonType=fill-black]').addEventListener('click', () => {
+        buildGrid(currentDimension, fillBlack);
+        sketchInColor = false;
+
+    })
+    document.querySelector('button[data-buttonType=fill-color]').addEventListener('click', () => {
+        buildGrid(currentDimension, fillColor);
+        sketchInColor = true;
+    })
+    document.querySelector('button[data-buttonType=clear]').addEventListener('click', () => {
+       clearGrid();
+    })
+
+    
+    document.querySelector('.submit-button').addEventListener('click', () => {
+        let sizeInputField = document.querySelector('.grid-size-text-input');
+        let sizeInput= parseInt(sizeInputField.value);
+        if(sizeInput > 100 || sizeInput< 1 || isNaN(sizeInput)){
+            sizeInputField.value = '';
+            alert('Sorry that input is invalid :(  To assure success please enter a valid input... Thank you!')
+        }
+        else{
+            currentDimension = sizeInput;
+            if(sketchInColor){
+                buildGrid(currentDimension, fillColor);
+            }
+            else{
+                buildGrid(currentDimension, fillBlack);
+            }
+    }
+    })
+    
+
+} 
 
